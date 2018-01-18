@@ -53,7 +53,8 @@
 				<nav id="main-nav">
 
 					<ul class="clearfix">
-						<li><a href="/cart" rel="nofollow"> Meu Carrinho (${carrinhoCompras.quantidade}) </a></li>
+						<li><a href="/cart" rel="nofollow"> Meu Carrinho
+								(${carrinhoCompras.quantidade}) </a></li>
 
 						<li><a href="/pages/sobre-a-casa-do-codigo" rel="nofollow">Sobre
 								Nós</a></li>
@@ -101,9 +102,11 @@
 
 
 		<section class="buy-options clearfix">
-			 <form action='<c:url value="/carrinho/add" />' method="post" class="container">
+			<form:form servletRelativeAction="/carrinho/add" method="post"
+				cssClass="container">
+				<input type="hidden" name="produtoId" value="${produto.id}" />
 				<ul id="variants" class="clearfix">
-					<input type="hidden" name="produtoId" value="${produto.id}" />
+
 					<c:forEach items="${produto.precos}" var="preco">
 						<li class="buy-option"><input type="radio" name="tipo"
 							class="variant-radio" id="tipo" value="${preco.tipo}"
@@ -114,9 +117,8 @@
 				</ul>
 				<button type="submit" class="submit-image icon-basket-alt"
 					alt="Compre Agora" title="Compre Agora${produto.titulo}"></button>
-			</form>
-			</form>
 
+			</form:form>
 		</section>
 
 		<div class="container">
@@ -134,7 +136,11 @@
 					Número de páginas: <span>${produto.paginas }</span>
 				</p>
 				<p></p>
-				<p>Data de publicação: <fmt:formatDate value="${produto.dataLancamento.time}" pattern="dd/MM/yyyy"/>  </p>
+				<p>
+					Data de publicação:
+					<fmt:formatDate value="${produto.dataLancamento.time}"
+						pattern="dd/MM/yyyy" />
+				</p>
 				<p>
 					Encontrou um erro? <a href='/submissao-errata' target='_blank'>Submeta
 						uma errata</a>
