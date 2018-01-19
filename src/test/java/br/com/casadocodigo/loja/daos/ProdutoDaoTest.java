@@ -10,16 +10,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.casadocodigo.loja.builders.ProdutoBuilder;
+import br.com.casadocodigo.loja.conf.AppWebConfiguration;
 import br.com.casadocodigo.loja.conf.JPAConfiguration;
 import br.com.casadocodigo.loja.confs.DataSourceConfigurationTest;
 import br.com.casadocodigo.loja.models.Produto;
 import br.com.casadocodigo.loja.models.TipoPreco;
 
+@WebAppConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { JPAConfiguration.class, ProdutoDAO.class ,DataSourceConfigurationTest.class})
+@ContextConfiguration(classes = { JPAConfiguration.class, AppWebConfiguration.class,
+		DataSourceConfigurationTest.class})
 @ActiveProfiles("test")
 public class ProdutoDaoTest {
 
