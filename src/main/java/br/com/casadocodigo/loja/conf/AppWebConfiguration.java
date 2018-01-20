@@ -40,7 +40,8 @@ import br.com.casadocodigo.loja.models.CarrinhoCompras;
 
 @EnableWebMvc
 @EnableCaching
-@ComponentScan(basePackageClasses = { JpaProduction.class,HomeController.class, ProdutoDAO.class, FileSaver.class, CarrinhoCompras.class })
+@ComponentScan(basePackageClasses = { JpaProduction.class, HomeController.class, ProdutoDAO.class, FileSaver.class,
+		CarrinhoCompras.class })
 public class AppWebConfiguration extends WebMvcConfigurerAdapter {
 
 	@Bean
@@ -117,4 +118,12 @@ public class AppWebConfiguration extends WebMvcConfigurerAdapter {
 	public LocaleResolver localeResolver() {
 		return new CookieLocaleResolver();
 	}
+
+	// @Override
+	// public void onStartup(ServletContext servletContext) throws ServletException
+	// {
+	// super.onStartup(servletContext);
+	// servletContext.addListener(new RequestContextListener());
+	// servletContext.setInitParameter("spring.profiles.active", "dev");
+	// }
 }

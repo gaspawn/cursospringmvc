@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
@@ -28,6 +29,7 @@ public class Usuario implements UserDetails {
 	// getters and setters
 
 	@Override
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return this.roles;
 	}
@@ -35,6 +37,30 @@ public class Usuario implements UserDetails {
 	@Override
 	public String getPassword() {
 		return this.senha;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	public List<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
 	}
 
 	@Override

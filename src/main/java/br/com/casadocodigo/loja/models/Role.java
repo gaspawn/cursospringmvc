@@ -17,6 +17,10 @@ public class Role implements GrantedAuthority {
 
 	// getters and setters
 
+	public Role(String string) {
+		this.nome = string;
+	}
+
 	@Override
 	public String getAuthority() {
 		return this.nome;
